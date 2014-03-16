@@ -1,0 +1,979 @@
+<html>
+<head>
+<style>
+
+
+
+    
+    
+    
+    
+    body
+{
+font-size:75%;
+font-family:courier new,'sans serif';
+background-color:#ffffff;
+color:#0c0c0d;
+margin:10px;
+}
+
+h1 {font-size:200%;}
+h2 {font-size:140%;}
+h3 {font-size:110%;}
+
+th {background-color:#ffffff;}
+
+a:link {color:#00a7fd;text-decoration:none;}
+a:visited {color:#00a7fd;text-decoration:none;}
+a:hover {text-decoration:none;}
+a:active {text-decoration:none;}
+
+hr{margin:20px 0;border:0;border-top:1px solid #ddd;border-bottom:0px solid #fff; width:90%; margin-left:5%; margin-right:5%;text-align:center;}
+.polka hr{margin:20px 0;border:0;border-top:1px dotted #00a7fd;border-bottom:0px solid #fff; width:80%; margin-left:10%; margin-right:10%;text-align:center;}
+
+img {
+    max-width: 100%;
+    }
+
+</style>
+  
+      
+<!-- OVERLAY TAG DIVS (START) -->
+
+<style type="text/css">
+
+div#overlay {
+display: none;
+z-index: 2;
+background: #000;
+position: fixed;
+width: 100%;
+height: 100%;
+top: 0px;
+left: 0px;
+text-align: center;
+}
+
+div#specialBox {
+display: none;
+position: absolute;
+z-index: 3;
+left:50%;
+top:50%;
+margin: -300px 0px 0px -500px;
+width: 1000px; 
+height: 1200px;
+float: left;
+background: #FFF;
+color: #000;
+
+}
+div#wrapper {
+position:absolute;
+top: 0px;
+left: 0px;
+padding-left:24px;
+}
+</style>
+<script type="text/javascript">
+function toggleOverlay(){
+var overlay = document.getElementById('overlay');
+var specialBox = document.getElementById('specialBox');
+overlay.style.opacity = .8;
+if(overlay.style.display == "block"){
+overlay.style.display = "none";
+specialBox.style.display = "none";
+} else {
+overlay.style.display = "block";
+specialBox.style.display = "block";
+}
+}
+</script>
+
+<!-- OVERLAY TAG DIVS (END) -->
+
+
+<!-- INVISIBLE DIV -->
+<div id="invisible">
+<div id="audioposts">
+{block:Posts}
+        
+                  {block:Audio}
+                  
+                    {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+            
+            <div class="entry-content">
+              {AudioPlayerBlack}
+            {PlayCountWithLabel}<br>
+           {block:TrackName}
+{TrackName}
+{/block:TrackName}<br>
+            {block:Artist}
+{Artist}
+{/block:Artist}<br>
+{block:Album}
+{Album}
+{/block:Album}<br>
+
+            </div>
+              {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+                            
+          {/block:Audio}
+        
+                         {block:Photo}
+                         
+                             {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+            
+                           <!-- <div class="entry-content"> -->
+              {LinkOpenTag}
+                <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+              {LinkCloseTag}
+              {block:Caption}
+              <!--  <div class="caption"> -->
+                  {Caption}
+              <!--  </div> -->
+              {/block:Caption}
+            <!-- </div>  -->
+            
+             {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+                            
+                    {/block:Photo}
+                    
+                    
+                    {block:Panorama}
+                    
+                    {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+                        <li class="post panorama">
+                            {LinkOpenTag}
+                            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+                                {LinkCloseTag}
+                                {block:Caption}
+                                <div class="caption">{Caption}</div>
+                                    {/block:Caption}
+                        </li>
+                        
+                         {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+              
+                    {/block:Panorama}
+
+                    {block:Photoset}
+                    
+                    {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+                                        <div class="entry-content">
+                {Photoset-700}
+                {block:Caption}
+                  <div class="caption">
+                    {Caption}
+                  </div>
+                {/block:Caption}
+              </div>
+              
+               {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+              
+          {/block:Photoset}
+          
+      {/block:Posts}
+
+
+
+        </div> <!-- audio posts -->
+        </div> <!-- invisible div -->
+
+
+
+
+<div id="header">
+        <div style="word-wrap: break-word;margin:10px;padding:0px 200px 0px 200px;">  <!-- So that the text in column doesn't breach parameters -->
+           <h1><img src="{PortraitURL-16}"> <a href="{BlogURL}">{Title}</a></h1>
+
+        {block:Description}
+            <p id="description">{Description}</p>
+        {/block:Description}
+        (≚ᄌ≚)ℒℴѵℯ❤
+    
+
+<!-- Start Special Centered Box -->
+<!-- Start Normal Page Content -->
+  <a onclick="toggleOverlay()">Test ONE PIECE</a>
+<!-- End Normal Page Content -->
+    
+    
+    
+    
+    
+    
+    
+    </div>
+    
+    
+</div>
+
+<div id="container">
+  <div id="center" class="column" style="word-wrap: break-word;resize:both;
+overflow:auto;"> 
+      <!-- So that the text in column doesn't breach parameters -->
+    
+  <h1>中央の列</h1>
+    <input type='button' onclick='myFunction()' value='気にしないで'/>
+    
+<div id="textposts">
+
+
+<Div class = "autopagerize_page_element">
+                {block:Posts}
+               
+          {block:Text}
+          
+           {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}        
+
+
+            <header class="entry-header">
+              {block:Title}
+                <h1 class="entry-title"><a href="{Permalink}">{Title}</a></h1>
+              {/block:Title}
+            </header>
+            <div class="entry-content">
+              {Body}
+            </div>
+            
+                                                        {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+              
+                {/block:Text}
+                
+                {block:Quote}
+                
+                {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+                    <li class="post quote">
+                        "{Quote}"
+
+                        {block:Source}
+                            <div class="source">{Source}</div>
+                        {/block:Source}
+                    </li>
+                    
+                     {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+              
+                {/block:Quote}
+                
+                {block:Link}
+                
+                {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+                    <li class="post link">
+                        <a href="{URL}" class="link" {Target}>{Name}</a>
+
+                        {block:Description}
+                            <div class="description">{Description}</div>
+                        {/block:Description}
+                    </li>
+                    
+                     {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+              
+                {/block:Link}
+                
+                
+                {block:Answer}
+                
+                {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+                 <li class="post answer">
+        <div id="speechbubble">{Question}</div><br>
+        <img src="{AskerPortraitURL-16}"> {Asker}<br><div class="polka hr"><hr></div><br>
+
+    {block:Answerer}
+       {Answerer}: <br>
+       {Answer}
+    {/block:Answerer}
+    
+        {Replies}
+    
+     {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+              
+{/block:Answer}
+
+                {block:Chat}
+                
+                {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+                    <li class="post chat">
+                        {block:Title}
+                            <h3><a href="{Permalink}">{Title}</a></h3>
+                        {/block:Title}
+
+                        <ul class="chat">
+                            {block:Lines}
+                                <li class="{Alt} user_{UserNumber}">
+                                    {block:Label}
+                                        <span class="label">{Label}</span>
+                                    {/block:Label}
+
+                                    {Line}
+                                </li>
+                            {/block:Lines}
+                        </ul>
+                    </li>
+                    
+                     {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+              
+                {/block:Chat}
+                
+                <!-- TEMPORARY PHOTO AUDIO VIDEO POSTS FOR MIDDLE COLUMN-->
+                
+                  
+                   {block:Photo}
+                         
+                             {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+            
+                           <!-- <div class="entry-content"> -->
+              {LinkOpenTag}
+                <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+              {LinkCloseTag}
+              {block:Caption}
+              <!--  <div class="caption"> -->
+                  {Caption}
+              <!--  </div> -->
+              {/block:Caption}
+            <!-- </div>  -->
+            
+             {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+                            
+                    {/block:Photo}
+                    
+                    
+                    {block:Panorama}
+                    
+                    {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+                        <li class="post panorama">
+                            {LinkOpenTag}
+                            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+                                {LinkCloseTag}
+                                {block:Caption}
+                                <div class="caption">{Caption}</div>
+                                    {/block:Caption}
+                        </li>
+                        
+                         {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+              
+                    {/block:Panorama}
+
+                    {block:Photoset}
+                    
+                    {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+                                        <div class="entry-content">
+                {Photoset-700}
+                {block:Caption}
+                  <div class="caption">
+                    {Caption}
+                  </div>
+                {/block:Caption}
+              </div>
+              
+               {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+              
+          {/block:Photoset}
+                   
+                   
+                    
+                     {block:Audio}
+                     
+                      
+                    {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+            
+            <div class="entry-content">
+              {AudioPlayerBlack}
+            {PlayCountWithLabel}<br>
+           {block:TrackName}
+{TrackName}
+{/block:TrackName}<br>
+            {block:Artist}
+{Artist}
+{/block:Artist}<br>
+{block:Album}
+{Album}
+{/block:Album}<br>
+                 {Caption}
+
+                {/block:Caption}
+              </div>
+              
+               {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+ 
+          {/block:Audio}
+
+                    {block:Video}
+                     {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+                        <div class="entry-content">
+                        {Video-500}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                        
+                           {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+                        
+                        
+                {/block:Video}
+                
+                            
+
+               
+                
+                
+              
+                    <!-- END OF TEMPORARY PHOTO AUDIO VIDEO POSTS -->
+
+            {/block:Posts}
+            </div> <!-- for infinite scolling -->
+            
+            </div>
+            
+            
+            
+            
+            
+            
+       
+            <div>
+            
+            {block:Posts}
+            
+                   {block:IfNotText}  
+    
+    
+                         {block:Photo}
+                         
+                             {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+            
+                           <!-- <div class="entry-content"> -->
+              {LinkOpenTag}
+                <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+              {LinkCloseTag}
+              {block:Caption}
+              <!--  <div class="caption"> -->
+                  {Caption}
+              <!--  </div> -->
+              {/block:Caption}
+            <!-- </div>  -->
+            
+             {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+                            
+                    {/block:Photo}
+                    
+                    
+                    {block:Panorama}
+                    
+                    {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+                        <li class="post panorama">
+                            {LinkOpenTag}
+                            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+                                {LinkCloseTag}
+                                {block:Caption}
+                                <div class="caption">{Caption}</div>
+                                    {/block:Caption}
+                        </li>
+                        
+                         {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+              
+                    {/block:Panorama}
+
+                    {block:Photoset}
+                    
+                    {block:Date}
+               {block:NewDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:NewDayDate}
+                             {block:SameDayDate}<p><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}</a></p>{/block:SameDayDate}
+            {/block:Date}  
+                                        <div class="entry-content">
+                {Photoset-700}
+                {block:Caption}
+                  <div class="caption">
+                    {Caption}
+                  </div>
+                {/block:Caption}
+              </div>
+              
+               {block:ContentSource} 
+                            <a href="{SourceURL}">Source: {SourceTitle}</a>
+                                            {/block:ContentSource}<br>
+{block:RebloggedFrom} 
+Reblogged from <img src="{ReblogParentPortraitURL-16}"> <a href="{ReblogParentURL}">{ReblogParentName}</a> ★ Originally posted by <img src="{ReblogRootPortraitURL-16}"> <a href="{ReblogRootURL}">{ReblogRootName}</a>
+{/block:RebloggedFrom} 
+<br>
+<a href="{Permalink}">{TimeAgo}</a>
+{block:NoteCount} ★
+<a href="{Permalink}">{NoteCountWithLabel}</a>
+{/block:NoteCount}
+ {block:HasTags} ★
+                  {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                  {/block:Tags}
+              {/block:HasTags}
+              <hr>
+              
+          {/block:Photoset}
+                    
+                     
+                       {/block:IfNotText} 
+                    
+                        {/block:Posts}
+                    
+                    
+        </ol>
+  </div>
+  
+
+  
+  
+  </div>
+<script type="text/javascript">
+function myFunction(){
+    var oldHTML = document.getElementById('textposts').innerHTML;
+    var newHTML = document.getElementById('audioposts').innerHTML;
+        document.getElementById('textposts').innerHTML = newHTML;
+}
+        </script>
+
+
+  
+  
+  <div id="left" class="column"> 
+        <div style="word-wrap: break-word;">  <!-- So that the text in column doesn't breach parameters -->
+        <h1>左の列</h1>
+                <a class="twitter-timeline"  href="https://twitter.com/l3reezer"  data-widget-id="328442197567475713" height="400px" bgcolor="00aacf">Tweets by @l3reezer</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    
+
+          
+          <br>
+          
+          <div>
+          {block:Following} 
+          {block:Followed} 
+          <a href="{FollowedURL}"><img src="{FollowedPortraitURL-16}"/></a>
+          {/block:Followed}
+          {/block:Following}
+          </div>
+          
+          (≚ᄌ≚)ℒℴѵℯ❤<br>
+        </div>
+        
+        
+        
+          
+      <Div class = "autopagerize_page_element"> 
+        <div>
+        <id="posts">
+                {block:Posts}
+
+          {block:Audio}
+            <div class="entry-content">
+              {AudioPlayerBlack}
+            {PlayCountWithLabel}<br>
+           {block:TrackName}
+{TrackName}
+{/block:TrackName}<br>
+            {block:Artist}
+{Artist}
+{/block:Artist}<br>
+{block:Album}
+{Album}
+{/block:Album}<br>
+
+            </div>
+          {/block:Audio}
+
+        {/block:Posts}
+        </div> <!-- infinite scrolling -->
+        </id>
+  </div>
+
+
+
+      </div>
+  
+  <div id="right" class="column">
+            <div style="word-wrap: break-word;">  <!-- So that the text in column doesn't breach parameters -->
+    <h1>右の列</h1>
+            </div>
+            
+            <!-- TUMBLR MOSAIC VIEWER
+            <iframe src="http://tmv.proto.jp/#!/l3reezer" width="500" height="1200" frameborder="0"></iframe>
+        -->
+
+
+
+        
+  </div>
+      
+      
+<style type="text/css">
+
+#invisible {
+    position: absolute;
+    left: -9999px;
+}
+    
+    #speechbubble
+{
+border:0px solid #a1a1a1;
+padding:20px 40px; 
+background:#f4f4f4;
+border-radius:10px;
+}
+    #imageshadow
+    {
+box-shadow: 0px 0px 4px #ccc;
+}
+
+    body {
+  min-width: 520px;      /* 2x LC width + RC width */
+}
+#container {
+  padding-left: 210px;   /* LC width */
+  padding-right: 100px;  /* RC width */
+}
+#container .column {
+  position: relative;
+  float: left;
+}
+#center {
+  width: 100%;
+}
+#left {
+  width: 210px;          /* LC width */
+  right: 210px;          /* LC width */
+  margin-left: -100%;
+}
+#right {
+  width: 100px;          /* RC width */
+  margin-right: -100px;  /* RC width */
+}
+#footer {
+  clear: both;
+}
+    
+</style>   
+
+
+
+
+
+
+
+
+<!-- DEFAULTED -->
+body {background-color:yellow;}
+h1   {font-size:36pt;}
+h2   {color:blue;}
+p    {margin-left:50px;}
+</style>
+</head>
+
+<body>
+
+<h1>This header is 36 pt</h1>
+<h2>This header is blue</h2>
+
+<p>This paragraph has a left margin of 50 pixels</p> 
+
+</body>
+</html>
